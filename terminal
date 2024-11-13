@@ -1,0 +1,21 @@
+# Create and enter project directory
+npx create-next-app@latest volumetric-pwa --typescript --tailwind --app --src-dir
+cd volumetric-pwa
+
+# Install all dependencies at once
+npm install next@latest react@latest react-dom@latest next-auth@beta @prisma/client @auth/prisma-adapter@beta @t3-oss/env-nextjs zod @radix-ui/react-dialog @radix-ui/react-slot @radix-ui/react-toast @radix-ui/react-tabs @radix-ui/react-label @radix-ui/react-separator @radix-ui/react-avatar @radix-ui/react-dropdown-menu @radix-ui/react-navigation-menu @radix-ui/react-progress class-variance-authority clsx tailwind-merge @hookform/resolvers react-hook-form lucide-react next-themes three @react-three/fiber @react-three/drei @react-three/xr @react-three/postprocessing @mediapipe/tasks-vision file-loader @types/three @types/next-auth tailwindcss-animate
+
+# Install dev dependencies
+npm install -D prisma typescript @types/node @types/react @types/react-dom @types/eslint eslint eslint-config-next postcss autoprefixer
+
+# Initialize everything
+npx prisma init
+npx prisma generate
+npx prisma db push
+
+# Create global.d.ts file for additional type declarations
+echo "/// <reference types=\"next\" />
+/// <reference types=\"next/image-types/global\" />" > src/types/global.d.ts
+
+# Start the development server
+npm run dev
